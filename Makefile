@@ -6,6 +6,10 @@ fmt: ## format
 lint.kt: ## Kotlin の lint
 	./gradlew detekt
 
+.PHONY: lint.commit-msgs
+lint.commit-msgs: ## git commit messages を lint
+	@bash scripts/lint-git-commit-messages.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
