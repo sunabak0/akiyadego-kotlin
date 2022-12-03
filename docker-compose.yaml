@@ -21,3 +21,7 @@ services:
       MYSQL_DATABASE: akiyadego-db
       LANG: C.UTF-8
       TZ: Asia/Tokyo
+    volumes:
+      - type: bind
+        source: ${PWD}/docker/mysql/sql/
+        target: /docker-entrypoint-initdb.d/
