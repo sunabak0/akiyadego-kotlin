@@ -10,6 +10,10 @@ lint.kt: ## Kotlin の lint
 lint.commit-msgs: ## git commit messages を lint
 	@bash scripts/lint-git-commit-messages.sh
 
+.PHONY: lint.pr
+lint.pr: ## GitHub の PR を lint
+	@bash scripts/lint-current-branch-pull-request.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
