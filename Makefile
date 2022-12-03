@@ -1,3 +1,7 @@
+.PHONY: setup
+setup: ## 開発環境のセットアップ
+	@bash scripts/setup.sh
+
 .PHONY: fmt
 fmt: ## format
 	./gradlew detekt --auto-correct
