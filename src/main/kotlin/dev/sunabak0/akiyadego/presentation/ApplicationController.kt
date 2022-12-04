@@ -16,7 +16,7 @@ class ApplicationController {
      *
      */
     @GetMapping("/top")
-    fun top (): ResponseEntity<String> {
+    fun top(): ResponseEntity<String> {
         return ResponseEntity("top", HttpStatus.OK)
     }
 }

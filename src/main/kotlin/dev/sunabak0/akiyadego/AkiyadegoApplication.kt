@@ -7,5 +7,6 @@ import org.springframework.boot.runApplication
 class AkiyadegoApplication
 
 fun main(args: Array<String>) {
-	runApplication<AkiyadegoApplication>(*args)
+    @Suppress("SpreadOperator")
+    runApplication<AkiyadegoApplication>(*args)
 }
