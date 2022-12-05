@@ -2,9 +2,10 @@
 fmt: ## format
 	./gradlew detekt --auto-correct
 
-.PHONY: lint
-lint: ## lint
+.PHONY: lint.kt
+lint.kt: ## Kotlin の lint
 	./gradlew detekt
+
 ################################################################################
 # Utility-Command help
 ################################################################################
