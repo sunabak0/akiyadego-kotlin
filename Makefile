@@ -1,3 +1,7 @@
+.PHONY: setup
+setup: ## 開発環境のセットアップ
+	@bash scripts/setup.sh
+
 .PHONY: fmt
 fmt: ## format
 	./gradlew detekt --auto-correct
@@ -5,6 +9,14 @@ fmt: ## format
 .PHONY: lint.kt
 lint.kt: ## Kotlin の lint
 	./gradlew detekt
+
+.PHONY: lint.commit-msgs
+lint.commit-msgs: ## git commit messages を lint
+	@bash scripts/lint-git-commit-messages.sh
+
+.PHONY: lint.pr
+lint.pr: ## GitHub の PR を lint
+	@bash scripts/lint-current-branch-pull-request.sh
 
 ################################################################################
 # Utility-Command help
