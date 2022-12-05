@@ -1,10 +1,11 @@
-name: CI
+---
+name: Lint Kotlin
 
 on:
   push:
 
 jobs:
-  ci-lint-kt:
+  lint-kt:
     runs-on: ubuntu-latest
     steps:
       - name: リポジトリのチェックアウト
