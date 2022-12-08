@@ -120,6 +120,12 @@ function main() {
   echo "$pr_title" > "$PULL_REQUEST_TITLE_TEXT_PATH"
   echo "$pr_body" > "$PULL_REQUEST_BODY_TEXT_PATH"
 
+  echo '----------------debug'
+  echo "$pr_body"
+  echo '----------------debug2'
+  cat "$PULL_REQUEST_BODY_TEXT_PATH"
+  echo '----------------'
+
   commitlintPRTitle
   readonly commitlint_pr_title_exit_code=$?
   textlintPRTitle
