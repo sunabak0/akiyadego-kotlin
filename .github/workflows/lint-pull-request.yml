@@ -10,6 +10,11 @@ name: Lint PR
 #
 'on':
   pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
 
 jobs:
   lint-pr:
