@@ -14,6 +14,7 @@ name: Lint PR
       - opened
       - reopened
       - synchronize
+      - edited
 
 jobs:
   lint-pr:
