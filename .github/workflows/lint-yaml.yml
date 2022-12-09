@@ -23,4 +23,4 @@ jobs:
         uses: reviewdog/action-yamllint@v1
         with:
           filter_mode: diff_context  # 差分のみ (default: added)
-          fail_on_error: 'true'  # errorが出たら落ちる (default: 'false')
+          fail_on_error: 'true'  # error が出たらマージ不可 (default: 'false')
