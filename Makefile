@@ -22,6 +22,10 @@ lint.pr: ## GitHub の PR を lint
 lint.gh-action: ## GitHub Action を lint
 	docker run --rm --mount type=bind,source=${PWD},target=/repo --workdir /repo rhysd/actionlint:latest -color
 
+.PHONY: lint.yaml
+lint.yaml: ## YAML ファイルを lint
+	docker run --rm -it --mount type=bind,source=${PWD}/,target=/code/ pipelinecomponents/yamllint yamllint .
+
 ################################################################################
 # Utility-Command help
 ################################################################################
