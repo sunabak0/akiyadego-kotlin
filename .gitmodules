@@ -1,0 +1,3 @@
+[submodule "akiyadego-openapi"]
+	path = akiyadego-openapi
+	url = git@github.com:sunabak0/akiyadego-openapi.git
