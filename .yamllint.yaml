@@ -13,7 +13,10 @@ rules:
 #
 # 無視するPATH
 #
+# config/detekt/detekt.yml
+# detekt により、 export されるため
 ignore: |
   node_modules/*
   tmp/*
   docs/node_modules/*
+  config/detekt/detekt.yml

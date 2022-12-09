@@ -1,7 +1,13 @@
 ---
 name: Lint Kotlin
 
-on:
+#
+# 'on' にしている理由
+# yamllintで怒られるため
+#
+# 参考: https://github.com/adrienverge/yamllint/issues/430
+#
+'on':
   push:
 
 jobs:
