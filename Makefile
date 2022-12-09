@@ -26,6 +26,10 @@ lint.gh-action: ## GitHub Action を lint
 lint.yaml: ## YAML ファイルを lint
 	docker run --rm -it --mount type=bind,source=${PWD}/,target=/code/ pipelinecomponents/yamllint yamllint .
 
+.PHONY: lint.shell
+lint.shell: ## Shell script を lint
+	docker run --rm --mount type=bind,source=${PWD}/,target=/mnt koalaman/shellcheck:stable **/*.sh
+
 ################################################################################
 # Utility-Command help
 ################################################################################
