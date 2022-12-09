@@ -1,0 +1,22 @@
+## yamllintの設定
+#
+# - Default configuration
+#   - https://yamllint.readthedocs.io/en/stable/configuration.html#default-configuration
+#
+---
+
+extends: default
+
+rules:
+  line-length: disable  #  default: enable
+
+#
+# 無視するPATH
+#
+# config/detekt/detekt.yml
+# detekt により、 export されるため
+ignore: |
+  node_modules/*
+  tmp/*
+  docs/node_modules/*
+  config/detekt/detekt.yml

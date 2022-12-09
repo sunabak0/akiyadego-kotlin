@@ -1,3 +1,5 @@
+---
+
 # comments のルール
 comments:
   #
@@ -7,7 +9,7 @@ comments:
   # - 説明のないパブリッククラスを禁止する
   #
   UndocumentedPublicClass:
-    active: true # (default: false)
+    active: true  # (default: false)
   #
   # UndocumentedPublicClass
   #
@@ -15,7 +17,7 @@ comments:
   # - 説明のないパブリックな関数を禁止する
   #
   UndocumentedPublicFunction:
-    active: true # (default: false)
+    active: true  # (default: false)
   #
   # UndocumentedPublicClass
   #
@@ -23,7 +25,7 @@ comments:
   # - 説明のないパブリックなプロパティを禁止する
   #
   UndocumentedPublicProperty:
-    active: true # (default: false)
+    active: true  # (default: false)
 
 # style のルール
 style:
@@ -35,4 +37,4 @@ style:
   # - 未使用の import を禁止する
   #
   UnusedImports:
-    active: true # (default: false)
+    active: true  # (default: false)
