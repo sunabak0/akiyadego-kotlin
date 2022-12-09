@@ -1,0 +1,26 @@
+---
+
+name: Lint YAML
+
+#
+# 'on' にしている理由
+# yamllintで怒られるため
+#
+# 参考: https://github.com/adrienverge/yamllint/issues/430
+#
+'on':
+  pull_request:
+
+jobs:
+  lint-yaml:
+    name: Lint YAML
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v3
+      - name: yamllint
+        uses: reviewdog/action-yamllint@v1
+        with:
+          filter_mode: diff_context  # 差分のみ (default: added)
+          fail_on_error: 'true'  # errorが出たら落ちる (default: 'false')
