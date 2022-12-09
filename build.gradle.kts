@@ -13,14 +13,30 @@ plugins {
 	 * - https://github.com/detekt/detekt
 	 * GradlePlugins(plugins.gradle.org)
 	 * - https://plugins.gradle.org/plugin/io.gitlab.arturbosch.detekt
-	 * Main用途
+	 * Main 用途
 	 * - Linter/Formatter
-	 * Sub用途
+	 * Sub 用途
 	 * - 無し
 	 * 概要
 	 * KotlinのLinter/Formatter
 	 */
 	id("io.gitlab.arturbosch.detekt").version("1.22.0")
+
+	/**
+	 * dokka
+	 *
+	 * URL
+	 * - https://github.com/Kotlin/dokka
+	 * GradlePlugins(plugins.gradle.org)
+	 * - https://plugins.gradle.org/plugin/org.jetbrains.dokka
+	 * Main 用途
+	 * - ドキュメント生成ツール
+	 * Sub 用途
+	 * - 無し
+	 * 概要
+	 * Kotlin のドキュメント生成ツール
+	 */
+	id("org.jetbrains.dokka") version "1.7.20"
 }
 
 group = "dev.sunabak0"
@@ -61,13 +77,13 @@ tasks.withType<Test> {
 }
 
 /**
- * detektの設定
+ * detekt の設定
  *
  * 基本的に全て `detekt-override.yml` で設定する
  */
 detekt {
 	/**
-	 * ./gradlew detektGenerateConfig でdetekt.ymlが生成される(バージョンが上がる度に再生成する)
+	 * ./gradlew detektGenerateConfig で detekt.yml が生成される(バージョンが上がる度に再生成する)
 	 */
 	config = files(
 		"$projectDir/config/detekt/detekt.yml",
