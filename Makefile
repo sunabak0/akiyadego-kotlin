@@ -31,6 +31,13 @@ lint.shell: ## Shell script を lint
 	docker run --rm --mount type=bind,source=${PWD}/,target=/mnt koalaman/shellcheck:stable **/*.sh
 
 ################################################################################
+# git 関連
+################################################################################
+.PHONY: git.update-submodule
+git.update-submodule: ## git submodule を最新版にアップデート
+	git submodule update --init --recursive
+
+################################################################################
 # Utility-Command help
 ################################################################################
 .DEFAULT_GOAL := help
