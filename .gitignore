@@ -314,3 +314,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,visualstudiocode,intellij+all,node,gradle,java
+
+# tmp/ 以下に作成されるコミットメッセージを無視する
+tmp/
