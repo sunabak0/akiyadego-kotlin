@@ -14,12 +14,14 @@
 #
 src/main:
   - 'src/main/*'
+  - 'src/main/**/*'
 
 #
 # test系
 #
 src/test:
   - 'src/test/*'
+  - 'src/test/**/*'
 
 #
 # プレゼンテーション層
