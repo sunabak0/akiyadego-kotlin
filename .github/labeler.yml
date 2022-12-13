@@ -9,14 +9,14 @@
 ---
 
 #
-# src/main
+# src/main/ 以下全て
 #
 src/main:
   - 'src/main/*'
   - 'src/main/**/*'
 
 #
-# test系
+# src/test/ 以下全て
 #
 src/test:
   - 'src/test/*'
