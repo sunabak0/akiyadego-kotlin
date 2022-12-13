@@ -8,7 +8,6 @@
 #
 ---
 
-
 #
 # src/main
 #
@@ -28,24 +27,28 @@ src/test:
 #
 presentation:
   - '**/presentation/*'
+  - '**/presentation/**/*'
 
 #
 # ユースケース層
 #
 usecase:
   - '**/usecase/*'
+  - '**/usecase/**/*'
 
 #
 # ドメイン層
 #
 domain:
   - '**/domain/*'
+  - '**/domain/**/*'
 
 #
 # インフラ層
 #
 infra:
   - '**/infra/*'
+  - '**/infra/**/*'
 
 #
 # detekt
