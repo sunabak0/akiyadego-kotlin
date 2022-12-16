@@ -9,7 +9,13 @@ const config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  //
+  // ドキュメントのルート
+  //
+  // 開発時も以下のURLになる
+  // http://localhost:3000/akiyadego-kotlin/
+  //
+  baseUrl: '/akiyadego-kotlin/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

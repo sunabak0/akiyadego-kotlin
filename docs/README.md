@@ -10,7 +10,7 @@ npm install
 npm start
 ```
 
-http://localhost:3000 でアクセス可能
+http://localhost:3000/akiyadego-kotlin/ でアクセス可能
 
 ## ビルド
 
