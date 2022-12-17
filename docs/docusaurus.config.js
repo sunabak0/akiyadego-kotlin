@@ -88,20 +88,20 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: 'GitHub',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'sunabak0/akiyadego-kotlin',
+                href: 'https://github.com/sunabak0/akiyadego-kotlin',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'sunabak0/akiyadego-openapi',
+                href: 'https://github.com/sunabak0/akiyadego-openapi',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} 空き家でGo Project`,
       },
       prism: {
         theme: lightCodeTheme,
