@@ -121,6 +121,22 @@ dependencies {
 	 * [Spring-Boot-2.3ではjavax.validationを依存関係に追加しなければならない](https://qiita.com/tatetsujitomorrow/items/a397c311a95d66e4f955)
 	 */
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+
+	/**
+	 * AssertJ
+	 *
+	 * URL
+	 * - https://assertj.github.io/doc/
+	 * MavenCentral
+	 * - https://mvnrepository.com/artifact/org.assertj/assertj-core
+	 * Main用途
+	 * - JUnitでassertThat(xxx).isEqualTo(yyy)みたいな感じで比較時に使う
+	 * Sub用途
+	 * - 特になし
+	 * 概要
+	 * - JUnit等を直感的に利用するためのライブラリ
+	 */
+	testImplementation("org.assertj:assertj-core:3.23.1")
 }
 
 tasks.withType<KotlinCompile> {
