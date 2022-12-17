@@ -6,9 +6,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  title: '空き家でGo',
+  tagline: '空き家情報をまずは共有、そして解決へ',
+  url: 'https://sunabak0.github.io/',
   //
   // ドキュメントのルート
   //
@@ -55,10 +55,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: '空き家でGo',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: '空き家でGoのロゴ画像',
+          src: 'https://3.bp.blogspot.com/-hv0I1T3MuaM/Udy6iRcorII/AAAAAAAAWH4/7jIZoHSoUnE/s800/building_boroya.png',
         },
         items: [
           {
@@ -69,7 +69,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/sunabak0/akiyadego-kotlin',
             label: 'GitHub',
             position: 'right',
           },
