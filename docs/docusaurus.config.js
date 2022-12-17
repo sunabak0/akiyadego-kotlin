@@ -34,6 +34,9 @@ const config = {
     locales: ['ja'],
   },
 
+  /**
+   * コンテンツ郡
+   */
   presets: [
     [
       'classic',
@@ -52,6 +55,9 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      /**
+       * ナビゲーションバー(ヘッダー)
+       */
       navbar: {
         title: '空き家でGo',
         logo: {
@@ -72,6 +78,10 @@ const config = {
           },
         ],
       },
+
+      /**
+       * フッター
+       */
       footer: {
         style: 'dark',
         links: [
