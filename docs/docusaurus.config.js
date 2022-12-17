@@ -41,9 +41,6 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
         },
-        blog: {
-          showReadingTime: true,
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -67,7 +64,6 @@ const config = {
             position: 'left',
             label: 'ドキュメント',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/sunabak0/akiyadego-kotlin',
             label: 'GitHub',
