@@ -113,6 +113,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['kotlin'], // kotlin のシンタックスハイライトを追加
       },
     }),
 };
