@@ -116,6 +116,11 @@ const config = {
         additionalLanguages: ['kotlin'], // kotlin のシンタックスハイライトを追加
       },
     }),
+
+  markdown: {
+    mermaid: true, // mermaidを有効化
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 };
 
 module.exports = config;
