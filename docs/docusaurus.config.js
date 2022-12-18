@@ -43,13 +43,30 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          path: './docs-document',
+          routeBasePath: 'docs',
+          // sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-development',
+        path: './docs-development',
+        routeBasePath: 'dev',
+        editCurrentVersion: true,
+        // sidebarPath: require.resolve('./sidebars.js'),
+        // showLastUpdateAuthor: true,
+        // showLastUpdateTime: true,
+      },
+    ]
   ],
 
   themeConfig:
@@ -66,10 +83,14 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            href: '/docs/intro',
             position: 'left',
             label: 'ドキュメント',
+          },
+          {
+            href: '/dev/intro',
+            position: 'left',
+            label: '開発環境',
           },
           {
             href: 'https://github.com/sunabak0/akiyadego-kotlin',
@@ -85,15 +106,6 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
           {
             title: 'GitHub',
             items: [

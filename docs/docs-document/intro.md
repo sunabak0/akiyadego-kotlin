@@ -1,7 +1,8 @@
 ---
 sidebar_position: 1
+slug: /intro
 ---
 
-# 開発環境構築
+# ドキュメント
 
 Hello World
