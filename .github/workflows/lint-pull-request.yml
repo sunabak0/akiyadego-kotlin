@@ -15,6 +15,8 @@ name: Lint PR
       - reopened
       - synchronize
       - edited
+    branches-ignore:
+      - 'renovate/**'
 
 jobs:
   lint-pr:
