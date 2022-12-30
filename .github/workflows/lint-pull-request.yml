@@ -12,6 +12,8 @@ name: Lint PR
   pull_request:
     branches-ignore:
       - 'renovate/**'
+    branches:
+      - '*'
     types:
       - opened
       - reopened
