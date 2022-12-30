@@ -10,8 +10,8 @@ name: Lint PR
 #
 'on':
   pull_request:
-    tags-ignore:
-      - 'dependencies'
+    branches-ignore:
+      - 'renovate/sandbox-by-suna'
     types:
       - opened
       - reopened
