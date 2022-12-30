@@ -11,7 +11,7 @@ name: Lint PR
 'on':
   pull_request:
     branches-ignore:
-      - 'renovate/sandbox-by-suna'
+      - 'renovate/**'
     types:
       - opened
       - reopened
