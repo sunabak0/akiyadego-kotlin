@@ -11,8 +11,7 @@ name: Lint PR
 'on':
   pull_request:
     branches:
-      - '!renovate/**'
-      - '**'
+      - 'feature-#*/**'
     types:
       - opened
       - reopened
