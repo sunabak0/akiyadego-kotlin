@@ -35,7 +35,7 @@ lint.shell: ## Shell script を lint
 ################################################################################
 .PHONY: git.update-submodule
 git.update-submodule: ## git submodule を最新版にアップデート
-	git submodule update --init --recursive
+	git submodule update --init --recursive --remote
 
 ################################################################################
 # Utility-Command help
