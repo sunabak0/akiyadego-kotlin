@@ -18,8 +18,10 @@ name: Lint PR
 
 jobs:
   lint-pr:
+    #
     # PR 元のブランチ名が renovate/** の場合、実行しない
-    if: ${{ !startWith(github.head_ref, 'renovate/') }}
+    #
+    if: ${{ !startsWith(github.head_ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: リポジトリのチェックアウト
