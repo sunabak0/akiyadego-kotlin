@@ -10,10 +10,8 @@ name: Lint PR
 #
 'on':
   pull_request:
-    branches-ignore:
-      - 'renovate/**'
     branches:
-      - '*'
+      - 'feature-#*/**'
     types:
       - opened
       - reopened
