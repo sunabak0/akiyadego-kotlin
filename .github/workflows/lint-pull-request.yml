@@ -10,13 +10,13 @@ name: Lint PR
 #
 'on':
   pull_request:
+    branches-ignore:
+      - 'renovate/**'
     types:
       - opened
       - reopened
       - synchronize
       - edited
-    branches-ignore:
-      - 'renovate/**'
 
 jobs:
   lint-pr:
