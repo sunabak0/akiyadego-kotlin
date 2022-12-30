@@ -15,11 +15,14 @@ name: Lint PR
       - reopened
       - synchronize
       - edited
-    branches-ignore:
-      - 'renovate/**'
 
 jobs:
   lint-pr:
+    #
+    # PR 元が renovate 起因の場合、 job skip
+    # (renovate 起因の場合、ブランチ名は renovate/**)
+    #
+    if: ${{ !startsWith(github.head_ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: リポジトリのチェックアウト
