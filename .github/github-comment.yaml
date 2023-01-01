@@ -1,0 +1,40 @@
+#
+# github-comment の comment template
+#
+# リポジトリ: https://github.com/suzuki-shunsuke/github-comment
+# ドキュメント: https://suzuki-shunsuke.github.io/github-comment/
+#
+# 概要
+# - PR の GitHub Action で利用を想定
+# - 失敗時に PR にコメントを残す
+# - 古いコメントを hide する
+#
+# 利用例
+#
+# ```
+# $ github-comment exec --config .github/github-comment.yaml -k default -- make xxxx
+# ```
+#
+---
+exec:
+  default:
+    - when: ExitCode != 0
+      template: |
+        {{template "status" .}} {{template "link" .}}
+        exit code: {{.ExitCode}}
+
+        実行されたコマンド
+
+        ```
+        $ {{.Command}}
+        ```
+
+        <details>
+
+        出力
+
+        <pre><code>
+        {{.CombinedOutput | AvoidHTMLEscape}}
+        </code></pre>
+
+        </details>
