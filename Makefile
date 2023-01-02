@@ -33,6 +33,10 @@ lint.shell: ## Shell script を lint
 ################################################################################
 # git 関連
 ################################################################################
+.PHONY: git.check-for-submodule-updates
+git.check-for-submodule-updates: ## submodule の更新があるかどうかチェックする
+	@bash scripts/check-for-submodule-updates
+
 .PHONY: git.update-submodule
 git.update-submodule: ## git submodule を最新版にアップデート
 	git submodule update --init --recursive --remote
