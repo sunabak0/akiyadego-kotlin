@@ -1,0 +1,56 @@
+---
+sidebar_position: 2
+title: 応用
+slug: /advanced
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 応用
+
+- `Either` を使って失敗と成功を区別しよう
+
+## 例題
+
+基本と同じ
+
+## コード記述
+
+<Tabs>
+
+<TabItem value="advanced" label="Either利用">
+
+
+```kotlin
+
+```
+
+</TabItem>
+
+<TabItem value="basic" label="Either利用なし">
+
+```kotlin
+sealed interface UpdatePostResult {
+  object Success: UpdatePostResult                                                             // 番号 1
+  data class PostValidationError(val validationErrorMessages: List<String>): UpdatePostResult  // 番号 2
+  data class NotFoundPost(val userId: Int): UpdatePostResult                                   // 番号 3
+  data class Unauthorized(val userId: Int): UpdatePostResult                                   // 番号 4
+}
+
+/**
+ * 投稿の更新の結果によって返すStringを変更したい
+ */
+fun handleUpdatePostResult(result: UpdatePostResult): String {
+  return when (result) {
+    is UpdatePostResult.Unauthorized -> "401: 投稿(ID: ${result.userId})の更新権限がありません"
+    is UpdatePostResult.NotFoundPost -> "404: 投稿(ID: ${result.userId})が見つかりませんでした"
+    is UpdatePostResult.PostValidationError -> "422: ${result.validationErrorMessages.joinToString(",")}"
+    UpdatePostResult.Success -> "200: 成功です"
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>

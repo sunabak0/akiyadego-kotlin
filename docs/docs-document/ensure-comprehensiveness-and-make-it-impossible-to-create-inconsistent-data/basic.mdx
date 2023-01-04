@@ -1,0 +1,144 @@
+---
+sidebar_position: 1
+title: 基本
+slug: /basic
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 基本
+
+- 状況・状態の網羅性を `コンパイラ` に確認させよう
+  - `人間の目` で確認することを可能な限り避けよう
+- 不整合な状況・状態を、作成不可能にしよう
+  - プロパティの中身で指している状況・状態が変わったり、不整合が起きえることを避けよう
+    - 絶対ではない
+
+## 例題
+
+ID:5 の投稿の内容更新の結果のハンドリング
+
+- 要件1: 結果によって、返すレスポンス文字列を変える
+- 要件2: バリデーションエラーメッセージは `List<String>` で表現
+- 要件3: 状況・状態は独立しており、 `重複することはない` とする
+- 要件4: 結果の種類は下記の表に記述
+
+| 番号  | 結果  | 失敗理由                     | 失敗例          | レスポンス例                      |
+|:----|:---:|:-------------------------|:-------------|:----------------------------|
+| 1   | 失敗  | ID: 5 の投稿が見つかったが、権限がなかった | 他のユーザーの投稿だった | "401: 投稿(ID: 5)の更新権限がありません" |
+| 2   | 失敗  | ID: 5 の投稿が見つからなかった       | 削除済みだった      | "404: 投稿(ID: 5)は見つかりませんでした" |
+| 3   | 失敗  | 更新内容のバリデーションエラー          | テキストが長すぎる    | "422: テキストが長すぎます"           |
+| 4   | 成功  | -                        | -            | "200: 成功です"                 |
+
+## コード記述
+
+<Tabs>
+
+<TabItem value="ng1" label="NG-1">
+
+:::danger Not Good
+- 状況・状態の網羅性は、 `人の目` で確認する
+- 不整合なデータを `作れてしまう`
+  - 2つの is〇〇 フラグが両方 true なデータを `作れてしまう`
+:::
+
+```kotlin
+data class UpdatePostResult(
+  val validationErrorMessages: List<String>, // 長さが 1以上であれば、バリデーションエラー
+  val userId: Int,                           // 使わなくても常に入れておく
+  val isUnauthorized: Boolean,               // true なら権限無しエラー
+  val isNotFound: Boolean,                   // true ならNotFoundエラー
+)
+
+  /**
+   * 投稿の更新の結果によって返すStringを変更したい
+   */
+fun handleUpdatePostResult(result: UpdatePostResult): String {
+  if (result.isUnauthorized) {
+    return "401: 投稿(ID: ${result.userId})の更新権限がありません"
+  }
+  if (result.isNotFound) {
+    return "404: 投稿(ID: ${result.userId})が見つかりませんでした"
+  }
+  if (result.validationErrorMessages.isNotEmpty()) {
+    return "422: ${result.validationErrorMessages!!.joinToString(",")}"
+  }
+  return "200: 成功です"
+}
+```
+
+</TabItem>
+
+<TabItem value="ng2" label="NG-2">
+
+:::tip Good
+- 状況・状態の網羅性は、 `コンパイラ` が確認する
+:::
+
+:::danger Not Good
+- 不整合なデータを作ることが `できてしまう`
+  - validationErrorMessages が空ではない SUCCESS を作ることが `できてしまう`
+:::
+
+```kotlin
+enum class ResultStatus {
+  UNAUTHORIZED,          // 番号 1
+  NOT_FOUND_POST,        // 番号 2
+  POST_VALIDATION_ERROR, // 番号 3
+  SUCCESS,               // 番号 4
+}
+
+data class UpdatePostResult(
+  val status: ResultStatus,
+  val validationErrorMessages: List<String>, // POST_VALIDATION_ERROR 以外は 空List
+  val userId: Int,                           // 使わなくても常に入れておく
+)
+
+/**
+ * 投稿の更新の結果によって返すStringを変更したい
+ */
+fun handleUpdatePostResult(result: UpdatePostResult): String {
+  return when (result.status) {
+    ResultStatus.UNAUTHORIZED -> "401: 投稿(ID: ${result.userId})の更新権限がありません"
+    ResultStatus.NOT_FOUND_POST -> "404: 投稿(ID: ${result.userId})が見つかりませんでした"
+    ResultStatus.POST_VALIDATION_ERROR -> "422: ${result.validationErrorMessages!!.joinToString(",")}"
+    ResultStatus.SUCCESS -> "200: 成功です"
+  }
+}
+```
+
+</TabItem>
+
+<TabItem value="good" label="Good">
+
+:::tip Good
+- 状態の網羅性は、 `コンパイラ` が確認する
+- 不整合なデータを作ることが `できない`
+  - validationErrorMessages を持つ Success を作ることは `できない`
+:::
+
+```kotlin
+sealed interface UpdatePostResult {
+  object Success: UpdatePostResult                                                             // 番号 1
+  data class PostValidationError(val validationErrorMessages: List<String>): UpdatePostResult  // 番号 2
+  data class NotFoundPost(val userId: Int): UpdatePostResult                                   // 番号 3
+  data class Unauthorized(val userId: Int): UpdatePostResult                                   // 番号 4
+}
+
+/**
+ * 投稿の更新の結果によって返すStringを変更したい
+ */
+fun handleUpdatePostResult(result: UpdatePostResult): String {
+  return when (result) {
+    is UpdatePostResult.Unauthorized -> "401: 投稿(ID: ${result.userId})の更新権限がありません"
+    is UpdatePostResult.NotFoundPost -> "404: 投稿(ID: ${result.userId})が見つかりませんでした"
+    is UpdatePostResult.PostValidationError -> "422: ${result.validationErrorMessages.joinToString(",")}"
+    UpdatePostResult.Success -> "200: 成功です"
+  }
+}
+```
+
+</TabItem>
+
+</Tabs>
