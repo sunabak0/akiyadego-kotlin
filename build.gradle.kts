@@ -57,7 +57,7 @@ plugins {
 	 * - API仕様をスキーマファイル(yaml)に書いて、コード生成し、それを利用するようにする
 	 * - 可能な限りプロダクトコードに依存しないようにする(生成したコードにプロダクトコードを依存させる)
 	 */
-	id("org.openapi.generator") version "6.2.0"
+	id("org.openapi.generator") version "6.6.0"
 }
 
 group = "dev.sunabak0"
