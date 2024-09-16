@@ -1,0 +1,27 @@
+#
+# 開発環境
+#
+---
+
+services:
+  #
+  # MySQL
+  #
+  mysql:
+    image: mysql:8-debian
+    platform: linux/amd64 # mac m1用
+    container_name: akiyadego-mysql
+    command: mysqld --collation-server=utf8mb4_bin
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root-pass
+      MYSQL_USER: akiyadego-user
+      MYSQL_PASSWORD: akiyadego-pass
+      MYSQL_DATABASE: akiyadego-db
+      LANG: C.UTF-8
+      TZ: Asia/Tokyo
+    volumes:
+      - type: bind
+        source: ${PWD}/docker/mysql/sql/
+        target: /docker-entrypoint-initdb.d/
